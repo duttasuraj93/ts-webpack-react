@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack-dev-server --open --mode development --hot",
     "build": "webpack --mode production"
   },
@@ -14,8 +14,11 @@
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
+    "@testing-library/react": "^13.0.1",
+    "@types/jest": "^27.4.1",
     "babel-loader": "^8.2.4",
     "html-webpack-plugin": "^5.5.0",
+    "identity-obj-proxy": "^3.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "sass": "^1.50.0",
@@ -30,9 +33,15 @@
     "@reduxjs/toolkit": "^1.8.1",
     "@types/react": "^18.0.2",
     "@types/react-dom": "^18.0.0",
+    "@types/react-redux": "^7.1.23",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^27.5.1",
     "css-loader": "^6.7.1",
+    "jest": "^27.5.1",
     "react-redux": "^7.2.8",
     "react-router-dom": "^6.3.0",
-    "style-loader": "^3.3.1"
+    "react-test-renderer": "^18.0.0",
+    "style-loader": "^3.3.1",
+    "ts-jest": "^27.1.4"
   }
 }

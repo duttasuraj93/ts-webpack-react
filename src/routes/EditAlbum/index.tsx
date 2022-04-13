@@ -20,6 +20,7 @@ const EditAlbum: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(true)
   const [albumDetails, setAlbumDetails] = React.useState<AlbumDetails[]>([])
   const [albumTextValue, setTextValue] = React.useState('')
+  const [showUpdated, setShowUpdated] = React.useState<boolean>(false)
 
 
   async function getAlbums() {
@@ -49,6 +50,11 @@ const EditAlbum: React.FC = () => {
       title: albumTextValue
     }
     dispatch(updateAlbum(data))
+    setShowUpdated(true)
+
+    setTimeout(() => {
+      setShowUpdated(false)
+    }, 2000);
   }
 
   if(loading) return <div>Loading</div>
@@ -56,9 +62,16 @@ const EditAlbum: React.FC = () => {
 
   return (
     <div>
-      <input type="text" value={albumTextValue} onChange={(e) => setTextValue(e.target.value)} />
-      <button onClick={(e) => update(albumDetails[0].id, albumDetails[0].userId)}>Update</button>
-      <button onClick={(e) => navigate(`/albums`)}>go back to albums</button>
+      <div>
+      <input className='primary' type="text" value={albumTextValue} onChange={(e) => setTextValue(e.target.value)} />
+      {
+        showUpdated && (
+          <div>Updated</div>
+        )
+      }
+      </div>
+      <button className='primary' onClick={(e) => update(albumDetails[0].id, albumDetails[0].userId)}>Update</button>
+      <button className='primary' onClick={(e) => navigate(`/albums`)}>go back to albums</button>
     </div>
   )
 }

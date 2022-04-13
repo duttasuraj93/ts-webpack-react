@@ -22,7 +22,7 @@ const AlbumCard = ({ album }: Props) => {
   }
 
   return (
-    <div className='album'>
+    <div data-testid={`album-${album.id}`} className='album'>
       <div className='album--details'>
         <img src={`https://via.placeholder.com/200?text=${album.title}`} alt="" />
         <div>

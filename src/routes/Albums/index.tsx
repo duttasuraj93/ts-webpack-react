@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import * as React from 'react'
 import './index.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { getAlbums, albumStatus, albumPage } from '../../redux/reducers/albums'
@@ -14,8 +14,10 @@ const Albums: React.FC = () => {
   const loading = useAppSelector(albumStatus)
   const page = useAppSelector(albumPage)
 
-  useEffect(() => {
-    dispatch(getAlbums({page}))
+  React.useEffect(() => {
+    if (reduxAlbums.albumList.length === 0) {
+      dispatch(getAlbums({ page }))
+    }
   }, [])
 
   if (loading === 'loading') return <div>Loading</div>
@@ -27,7 +29,7 @@ const Albums: React.FC = () => {
       <div className='albums-container'>
         {reduxAlbums.albumList.map((item: any) => <AlbumCard album={item} />)}
       </div>
-      <button className='primary' onClick={(e) => dispatch(getAlbums({page}))}>Load More</button>
+      <button className='primary' onClick={(e) => dispatch(getAlbums({ page }))}>Load More</button>
       <button className='danger' onClick={(e) => dispatch(logoutUser())}>Logout</button>
     </div>
   )
