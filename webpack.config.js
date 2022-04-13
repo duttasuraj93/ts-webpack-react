@@ -11,6 +11,7 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     static: './dist',
+    historyApiFallback: { index: "/", disableDotRule: true },
   },
   module: {
     rules: [

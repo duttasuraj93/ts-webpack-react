@@ -15,7 +15,7 @@ const Albums: React.FC = () => {
 
   useEffect(() => {
     dispatch(getAlbums({page}))
-  }, [dispatch])
+  }, [])
 
 
   if (loading === 'loading') return <div>Loading</div>
