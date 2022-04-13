@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import './index.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { getAlbums, albumStatus, albumPage } from '../../redux/reducers/albums'
-import { setUser } from '../../redux/reducers/auth'
 import AlbumCard from './components/AlbumCard/AlbumCard';
 import AddAlbum from './components/AddAlbum/AddAlbum';
+import { logoutUser } from '../../redux/reducers/auth'
 
 
 const Albums: React.FC = () => {
@@ -18,23 +18,6 @@ const Albums: React.FC = () => {
     dispatch(getAlbums({page}))
   }, [])
 
-  const logoutUser = () => {
-    interface Data {
-      email: null | string,
-      password: null | string,
-      isLoggedIn: boolean
-    }
-    let data:  Data = {
-      email: null,
-      password: null,
-      isLoggedIn: false
-    }
-    dispatch(setUser(data))
-    localStorage.removeItem('email')
-    localStorage.removeItem('password')
-  }
-
-
   if (loading === 'loading') return <div>Loading</div>
   if (loading === 'failed') return <div>Failed to fetch albums</div>
 
@@ -45,7 +28,7 @@ const Albums: React.FC = () => {
         {reduxAlbums.albumList.map((item: any) => <AlbumCard album={item} />)}
       </div>
       <button className='primary' onClick={(e) => dispatch(getAlbums({page}))}>Load More</button>
-      <button className='danger' onClick={logoutUser}>Logout</button>
+      <button className='danger' onClick={(e) => dispatch(logoutUser())}>Logout</button>
     </div>
   )
 }

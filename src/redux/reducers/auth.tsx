@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../store'
 
-interface AuthState {
+export interface AuthState {
   email: string | null
   password: string | null
   isLoggedIn: boolean
@@ -21,11 +21,16 @@ export const authSlice = createSlice({
   name: 'AUTH',
   initialState: initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<AuthState>) => state = action.payload
+    setUser: (state, action: PayloadAction<AuthState>) => state = action.payload,
+    logoutUser: (state, action: PayloadAction<AuthState>) => {
+      state.email = null
+      state.password = null
+      state.isLoggedIn = false
+    },
   },
 })
 
-export const { setUser } = authSlice.actions
+export const { setUser, logoutUser } = authSlice.actions
 
 export const selectCount = (state: RootState) => state.auth
 
