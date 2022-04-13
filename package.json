@@ -38,6 +38,7 @@
     "babel-jest": "^27.5.1",
     "css-loader": "^6.7.1",
     "jest": "^27.5.1",
+    "mini-css-extract-plugin": "^2.6.0",
     "react-redux": "^7.2.8",
     "react-router-dom": "^6.3.0",
     "react-test-renderer": "^18.0.0",
