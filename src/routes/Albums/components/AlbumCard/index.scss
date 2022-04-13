@@ -1,0 +1,23 @@
+.album {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    
+
+    img {
+        height: 80px;
+        margin-right: 10px;
+    }
+
+    &--details {
+        display: flex;
+        align-items: center;
+    }
+
+    &--buttons {
+        display: flex;
+        gap: 10px;
+    }
+}

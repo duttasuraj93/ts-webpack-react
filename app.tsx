@@ -1,15 +1,5 @@
 import * as React from 'react';
 import "./app.scss";
-
-// function App() {
-//   return (
-//     <div>{'react setup from scratch without cra testing ts'}</div>
-//   );
-// }
-// export default App;
-
-// import React, { lazy, Suspense, useEffect } from 'react';
-// import './App.css';
 import {
   BrowserRouter as Router,
   Routes,
@@ -27,13 +17,13 @@ const EditAlbum = React.lazy(() => import('./src/routes/EditAlbum'));
 
 const App: React.FC = () => {
   const reduxAuth = useAppSelector((state) => state.auth)
+  const reduxTheme = useAppSelector((state) => state.theme)
   const dispatch = useAppDispatch()
 
   React.useEffect(() => {
 
     const email = localStorage.getItem('email')
     const password = localStorage.getItem('password')
-    console.log(email);
     if (email && password) {
       let data = {
         email: email,
@@ -48,7 +38,7 @@ const App: React.FC = () => {
 
 
   return (
-    <div className="App">
+    <div className="App" data-theme={reduxTheme}>
       <Router>
         <React.Suspense fallback={`Loading`}>
           <Routes>

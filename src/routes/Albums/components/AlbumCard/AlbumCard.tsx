@@ -1,4 +1,5 @@
 import * as React from 'react'
+import './index.scss'
 import { removeAlbum } from '../../../../redux/reducers/albums'
 import { useAppDispatch } from '../../../../../hooks'
 import { useNavigate } from "react-router-dom";
@@ -22,14 +23,17 @@ const AlbumCard = ({ album }: Props) => {
 
   return (
     <div className='album'>
-      <div>
+      <div className='album--details'>
         <img src={`https://via.placeholder.com/200?text=${album.title}`} alt="" />
-        <h4>{album.title}</h4>
+        <div>
+          <h4>{album.title}</h4>
+          <div className='album--buttons'>
+            <button className='primary' onClick={(e) => gotoEditAlbum(album.id)}>Update</button>
+            <button className='danger' onClick={(e) => dispatch(removeAlbum(album.id))}>Remove Album</button>
+          </div>
+        </div>
       </div>
-      <div>
-        <button onClick={(e) => gotoEditAlbum(album.id)}>Update</button>
-        <button onClick={(e) => dispatch(removeAlbum(album.id))}>Remove Album</button>
-      </div>
+
     </div>
   )
 }

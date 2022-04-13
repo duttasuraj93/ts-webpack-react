@@ -1,4 +1,5 @@
 import * as React from 'react'
+import './index.scss'
 import { addAlbum } from '../../../../redux/reducers/albums'
 import { useAppDispatch } from '../../../../../hooks'
 import { useNavigate } from "react-router-dom";
@@ -20,10 +21,9 @@ const AddAlbum: React.FC = () => {
   }
 
   return (
-    <div>
-      <h4>Add new Album</h4>
-      <input type="text" value={newAlbumInput} onChange={(e) => setNewAlbumInput(e.target.value)} />
-      <button onClick={addNewAlbum}>Submit</button>
+    <div className='add-album--container'>
+      <input className='primary' placeholder='Add new album' type="text" value={newAlbumInput} onChange={(e) => setNewAlbumInput(e.target.value)} />
+      <button className='primary' onClick={addNewAlbum}>Submit</button>
     </div>
   )
 }

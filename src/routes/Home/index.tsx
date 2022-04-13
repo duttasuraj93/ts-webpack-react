@@ -29,15 +29,15 @@ export default function Home() {
   return (
     <div>
       <h1></h1>
-      <button onClick={() => navigate('/albums')}>Go to Albums</button>
+      <button className='primary' onClick={() => navigate('/albums')}>Go to Albums</button>
       {
         reduxAuth.isLoggedIn ?
           <div>
-            <button onClick={logoutUser}>Logout</button>
+            <button className='primary' onClick={logoutUser}>Logout</button>
           </div>
           :
           <div>
-            <button onClick={() => navigate('/login')}>Login</button>
+            <button className='primary' onClick={() => navigate('/login')}>Login</button>
           </div>
       }
     </div>
