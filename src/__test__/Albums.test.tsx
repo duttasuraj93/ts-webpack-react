@@ -12,27 +12,28 @@ import reducer, { getAlbums, setPage, removeAlbum, addAlbum, updateAlbum } from 
 // window.localStorage.__proto__.setItem = jest.fn();
 // const spy = jest.spyOn(Storage.prototype, 'email');
 
-interface AlbumState {
-  userId: number
-  id: number
-  title: string
-}
-
-interface AlbumListState {
-  albumList: AlbumState[]
-  page: number,
-  status: string,
-  error: any
-}
+describe('Albums redux state tests', () => {
+  it('Should initially set games to an empty object', () => {
+    const state = store.getState().albums
+    expect(state.albumList).toEqual([])
+    expect(state.page).toEqual(1)
+    expect(state.status).toEqual('idle')
+    expect(state.error).toEqual(null)
+  })
+})
 
 
-const initialState: AlbumListState = {
-  albumList: [],
-  page: 1,
-  status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed',
-  error: null,
-}
 
-interface PageState {
-  page: number,
-}
+// test('Gets five albums on start', async () => {
+//   // render(<Provider store={store}><BrowserRouter><Albums /></BrowserRouter></Provider>)
+
+//   // const allAlbumElements = await screen.findAllByTestId(/album/i)
+//   // expect(allAlbumElements.length).toBe(5)
+
+  
+
+
+
+
+
+// });
