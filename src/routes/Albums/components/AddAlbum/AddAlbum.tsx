@@ -2,7 +2,6 @@ import * as React from 'react'
 import './index.scss'
 import { addAlbum } from '../../../../redux/reducers/albums'
 import { useAppDispatch } from '../../../../../hooks'
-import { useNavigate } from "react-router-dom";
 
 const AddAlbum: React.FC = () => {
 

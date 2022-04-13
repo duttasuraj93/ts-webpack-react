@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '../../../hooks'
 import { logoutUser } from '../../redux/reducers/auth'
 import { setTheme } from '../../redux/reducers/theme';
 
-export default function Home() {
+const Home: React.FC = () => {
 
   const reduxAuth = useAppSelector((state) => state.auth)
   const reduxTheme = useAppSelector((state) => state.theme)
@@ -28,3 +28,6 @@ export default function Home() {
     </div>
   )
 }
+
+
+export default Home;
