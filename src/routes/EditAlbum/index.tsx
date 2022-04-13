@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { useAppDispatch, useAppSelector } from '../../../hooks'
-import { setAlbums, setPage, removeAlbum, addAlbum, updateAlbum } from '../../redux/reducers/albums'
+import { useAppDispatch } from '../../../hooks'
+import { updateAlbum } from '../../redux/reducers/albums'
 import { useNavigate, useParams } from "react-router-dom";
 
 interface AlbumDetails {
@@ -26,11 +26,8 @@ const EditAlbum: React.FC = () => {
     await fetch(`https://jsonplaceholder.typicode.com/albums/${id}`,)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         setAlbumDetails([res])
         setTextValue(res.title)
-        // dispatch(setAlbums(res))
-        // dispatch(setPage(reduxAlbums.page + 1))
         setLoading(false)
         console.log(albumDetails);
       }).catch(err => {
